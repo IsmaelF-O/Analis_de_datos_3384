@@ -102,8 +102,8 @@ CLUSTERS = {
 }
 
 # MEJORA:
-# Esta lista define expresiones tematicas que queremos medir de forma directa.
-# Sirve para producir tablas faciles de interpretar con porcentajes por cluster
+# Esta lista define expresiones temáticas que queremos medir de forma directa.
+# Sirve para producir tablas fáciles de interpretar con porcentajes por cluster
 # y sobre el corpus completo. Puedes ampliarla segun avance tu marco teorico.
 EXPRESIONES_RELEVANTES = [
     "chatgpt",
@@ -172,12 +172,12 @@ STOPWORDS_OTRO = {
 # =========================================
 def normalizar_texto(texto):
     """
-    Limpia texto libre sin destruir completamente la informacion semantica.
+    Limpia texto libre sin destruir completamente la información semántica.
 
     MEJORA:
     En el script original se eliminaban todos los caracteres fuera de A-Z.
-    Eso borra acentos, guiones y parte de la informacion util. Aqui primero
-    normalizamos acentos y luego limpiamos con mas cuidado.
+    Eso borra acentos, guiones y parte de la informacion útil. Aqui primero
+    normalizamos acentos y luego limpiamos con más cuidado.
     """
     if pd.isna(texto):
         return ""
@@ -194,7 +194,7 @@ def normalizar_texto(texto):
 def columna_disponible(df, candidatas, default=""):
     """
     Devuelve la primera columna existente dentro de una lista de nombres
-    posibles. Scopus cambia algunos encabezados segun el formato de exportacion.
+    posibles. Scopus cambia algunos encabezados segun el formato de exportación.
     """
     for nombre in candidatas:
         if nombre in df.columns:
@@ -218,8 +218,8 @@ def limpiar_nombre_autor(nombre):
     Estandariza nombres de autor para evitar duplicados falsos.
 
     MEJORA:
-    Aqui quitamos IDs pegados al nombre, comas, acentos y espacios extra.
-    Tambien intentamos pasar de "Perez, Juan" a "juan perez" para que el
+    Aquí quitamos IDs pegados al nombre, comas, acentos y espacios extra.
+    Tambien intentamos pasar de "Pérez, Juan" a "juan pérez" para que el
     conteo sea mas consistente.
     """
     if pd.isna(nombre):
@@ -277,7 +277,7 @@ def contar_terminos(texto, terminos):
 
     MEJORA:
     El script original usaba "p in texto", lo que para casos como "ai" podia
-    dar falsos positivos dentro de otras palabras. Aqui usamos limites de
+    dar falsos positivos dentro de otras palabras. Aqui usamos límites de
     palabra cuando aplica.
     """
     if not texto:
@@ -294,7 +294,7 @@ def contar_terminos(texto, terminos):
 
 def extraer_autores_fila(row, col_autores, col_autores_full, col_author_ids):
     """
-    Une nombres e IDs por posicion para dejar una estructura mas estable.
+    Une nombres e IDs por posicion para dejar una estructura más estable.
 
     MEJORA:
     Antes se trabajaba solo con "Authors" y ademas se llamaba "Author_IDs"
@@ -411,7 +411,7 @@ def clasificar_cluster(texto):
 
     MEJORA:
     En lugar de solo devolver una categoria, guardamos el puntaje de cada
-    cluster. Eso ayuda mucho para justificar el analisis comparativo.
+    cluster. Eso ayuda mucho para justificar el análisis comparativo.
     """
     scores = {cluster: contar_terminos(texto, terminos) for cluster, terminos in CLUSTERS.items()}
     max_score = max(scores.values()) if scores else 0
@@ -475,7 +475,7 @@ def top_palabras_por_cluster(df):
 
 def frecuencia_real_por_cluster(df):
     """
-    Calcula frecuencia absoluta de terminos por cluster.
+    Calcula frecuencia absoluta de términos por cluster.
     """
     if df.empty:
         return pd.DataFrame()
