@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Análisis de Datos Bibliométricos 3D - Inteligencia Artificial</title>
+    <title>Scripts de Análisis - Análisis Bibliométrico 3D</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -14,7 +14,7 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             background: white;
             border-radius: 12px;
@@ -35,6 +35,10 @@
             padding-left: 15px;
             font-size: 1.5em;
         }
+        h3 {
+            color: #667eea;
+            margin-top: 20px;
+        }
         .description {
             color: #555;
             line-height: 1.8;
@@ -42,17 +46,19 @@
             margin: 20px 0;
         }
         .btn-container {
-            margin-top: 30px;
-            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         a.btn {
             display: inline-block;
-            padding: 15px 50px;
+            padding: 15px 40px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
@@ -61,25 +67,15 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
+        a.btn-secondary {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
         .section {
             margin-top: 25px;
             padding: 20px;
             background: #f9f9f9;
             border-radius: 8px;
             border-left: 4px solid #667eea;
-        }
-        .section h3 {
-            margin-top: 0;
-            color: #667eea;
-            font-size: 1.2em;
-        }
-        .section ul, .section li {
-            margin: 8px 0;
-            color: #555;
-            line-height: 1.7;
-        }
-        .section li {
-            margin-left: 20px;
         }
         .feature-grid {
             display: grid;
@@ -89,7 +85,7 @@
         }
         .feature-card {
             background: white;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
             border: 1px solid #e0e0e0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -97,26 +93,24 @@
         .feature-card h4 {
             color: #667eea;
             margin-top: 0;
+            font-size: 1.1em;
         }
-        .feature-card p {
+        .feature-card p, .feature-card li {
             color: #666;
             font-size: 14px;
-            margin: 8px 0 0 0;
+            margin: 8px 0;
+            line-height: 1.6;
         }
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .badge {
-            display: inline-block;
-            padding: 8px 15px;
-            background: #667eea;
-            color: white;
-            border-radius: 20px;
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
             font-size: 13px;
-            font-weight: bold;
+            overflow-x: auto;
+            margin: 15px 0;
+            color: #333;
         }
         .highlight {
             background: #fff3cd;
@@ -126,6 +120,79 @@
             margin: 15px 0;
             color: #856404;
         }
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+        .badge-secondary {
+            background: #764ba2;
+        }
+        .flow-diagram {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            font-size: 15px;
+            color: #555;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex-grow: 1;
+        }
+        .step-content strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .arrow {
+            color: #667eea;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+        ul, li {
+            color: #555;
+            line-height: 1.8;
+        }
+        li {
+            margin-left: 20px;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
         @media (max-width: 768px) {
             .feature-grid {
                 grid-template-columns: 1fr;
@@ -134,173 +201,363 @@
                 font-size: 1.8em;
             }
             a.btn {
-                padding: 12px 40px;
-                font-size: 16px;
+                padding: 12px 30px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📊 Análisis de Datos Bibliométricos 3D</h1>
+        <h1>🐍 Scripts de Análisis y Visualización</h1>
         <p class="description" style="font-size: 18px; color: #667eea; margin-bottom: 30px;">
-            <strong>Análisis del uso de Inteligencia Artificial en Scopus</strong>
+            <strong>Documentación técnica de los scripts Python utilizados en el proyecto</strong>
         </p>
 
-        <!-- Descripción General -->
+        <!-- Script Principal: generar_visualizacion_3d_scopus.py -->
+        <h2>🎨 Script Principal: generar_visualizacion_3d_scopus.py</h2>
         <div class="section">
-            <h3>📌 Descripción del Proyecto</h3>
             <p>
-                Este repositorio contiene un proceso completo de <strong>limpieza, normalización y estructuración</strong> 
-                de datos bibliométricos obtenidos de la base de datos <strong>Scopus</strong>. El análisis se enfoca en 
-                explorar y visualizar el uso de la inteligencia artificial en investigaciones académicas, identificando 
-                patrones, conexiones entre autores y clustering temático.
+                Este es el script <strong>más importante del proyecto</strong>. Se encarga de transformar los datos 
+                limpios y enriquecidos en una visualización 3D interactiva completamente funcional en HTML/JavaScript/Canvas.
             </p>
             <div class="highlight">
-                <strong>🎯 Objetivo Principal:</strong> Crear una visualización 3D interactiva que permita explorar 
-                relaciones entre artículos, autores y temas dentro de un corpus de investigación académica.
+                <strong>📍 Ubicación:</strong> Raíz del repositorio<br>
+                <strong>📄 Entrada:</strong> <code>dataset_limpio_enriquecido.csv</code><br>
+                <strong>📊 Salida:</strong> <code>visualizacion_clouster_3d.html</code> (archivo interactivo de 1.4 MB)
             </div>
         </div>
 
-        <!-- Limpieza de Datos -->
-        <h2>🔧 Etapa 1: Limpieza y Normalización de Datos</h2>
+        <!-- Funcionalidades Principales -->
+        <h2>⚙️ Funcionalidades Principales del Script</h2>
         <div class="feature-grid">
             <div class="feature-card">
-                <h4>✨ Normalización de Texto</h4>
+                <h4>📍 Generación de Nodos 3D</h4>
                 <p>
-                    • Conversión a minúsculas (títulos, autores, resúmenes)<br>
-                    • Eliminación de espacios redundantes<br>
-                    • Sustitución de valores nulos<br>
-                    • Depuración de caracteres no relevantes
+                    • Distribución espacial de artículos en 5 clusters temáticos<br>
+                    • Posicionamiento radial y helicoidal para evitar superposiciones<br>
+                    • Tamaño dinámico según número de citas<br>
+                    • Colores específicos por cluster
                 </p>
             </div>
             <div class="feature-card">
-                <h4>👥 Tratamiento de Autores</h4>
+                <h4>🔗 Construcción de Aristas (Edges)</h4>
                 <p>
-                    • Tokenización estructural por delimitador (;)<br>
-                    • Eliminación de espacios y acentos<br>
-                    • Identificación de duplicados<br>
-                    • Normalización basada en similitud textual
+                    • Conexiones por cluster (líneas tenues)<br>
+                    • Conexiones por autor compartido (líneas fuertes)<br>
+                    • Conexiones por palabra clave (líneas medias)<br>
+                    • Sistema de ponderación inteligente
+                </p>
+            </div>
+            <div class="feature-card">
+                <h4>🏷️ Clasificación Temática</h4>
+                <p>
+                    Detecta automáticamente a qué cluster pertenece cada artículo analizando términos clave:<br>
+                    • <strong>Social:</strong> Communication, interaction, social media<br>
+                    • <strong>Académico:</strong> Learning, teaching, classroom, pedagogy<br>
+                    • <strong>Creativo:</strong> Design, creativity, content creation<br>
+                    • <strong>Mixto:</strong> Combina múltiples ejes
+                </p>
+            </div>
+            <div class="feature-card">
+                <h4>📊 Análisis Bibliométrico</h4>
+                <p>
+                    • Cálculo de autores destacados por cluster<br>
+                    • Extracción de términos importantes<br>
+                    • Presencia de términos en clusters<br>
+                    • Estadísticas de citas y productividad
                 </p>
             </div>
         </div>
 
-        <!-- Identificación de Autores -->
-        <h2>🔍 Etapa 2: Identificación y Desambiguación de Autores</h2>
-        <div class="section">
-            <h3>Estrategia ORCID y Similitud Textual</h3>
-            <ul>
-                <li><strong>Identificadores únicos:</strong> Cuando están disponibles los ORCID, se utilizan para agrupar autores con certeza</li>
-                <li><strong>Normalización por similitud:</strong> Cuando no hay ORCID, se aplica un algoritmo de similitud textual para detectar variantes del mismo autor</li>
-                <li><strong>Agrupación inteligente:</strong> Los autores con nombres equivalentes se agrupan automáticamente</li>
-                <li><strong>Análisis de productividad:</strong> Se calcula la frecuencia de aparición de cada autor en el corpus para identificar los más relevantes</li>
-            </ul>
-        </div>
-
-        <!-- Análisis Mejorado v2.0 -->
-        <h2>📈 Etapa 3: Análisis Avanzado (Versión 2.0)</h2>
-        <div class="section">
-            <h3>Características Principales del Script Mejorado</h3>
-            <ul>
-                <li><strong>Limpieza robusta:</strong> Eliminación de duplicados y normalizaciones profundas</li>
-                <li><strong>Reducción de ruido semántico:</strong> Eliminación de signos de puntuación, admiración e interrogación</li>
-                <li><strong>Desambiguación de autores:</strong> Algoritmos avanzados para identificar el mismo autor bajo diferentes variantes</li>
-                <li><strong>Construcción de métricas:</strong> Generación de indicadores bibliométricos relevantes</li>
-                <li><strong>Clasificación temática:</strong> Clustering automático en 4 categorías principales</li>
-            </ul>
-        </div>
-
-        <!-- Clustering Temático -->
-        <h2>🎨 Etapa 4: Clasificación en Clusters Temáticos</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h4>🔵 Cluster Social</h4>
-                <p>Artículos enfocados en aspectos sociales e impacto de IA en sociedades</p>
-            </div>
-            <div class="feature-card">
-                <h4>🟣 Cluster Académico</h4>
-                <p>Investigaciones de carácter técnico y científico sobre IA</p>
-            </div>
-            <div class="feature-card">
-                <h4>🔴 Cluster Creativo</h4>
-                <p>Aplicaciones innovadoras y creativas de inteligencia artificial</p>
-            </div>
-            <div class="feature-card">
-                <h4>🟡 Cluster Mixto/Otro</h4>
-                <p>Artículos que no encajan en categorías previas o combinan múltiples áreas</p>
-            </div>
-        </div>
-
-        <div class="highlight">
-            <strong>📝 Método de clasificación:</strong> Detección automática de términos y expresiones clave 
-            relevantes para cada cluster temático.
-        </div>
-
-        <!-- Visualización 3D -->
-        <h2>🚀 Etapa 5: Visualización 3D Interactiva</h2>
-        <div class="section">
-            <h3>Características de la Visualización</h3>
-            <ul>
-                <li><strong>Espacio 3D interactivo:</strong> Exploración libre con rotación, zoom y navegación</li>
-                <li><strong>Nodos coloreados:</strong> Cada artículo representado por una esfera con color según su cluster</li>
-                <li><strong>Conexiones inteligentes:</strong>
-                    <ul>
-                        <li>Líneas tenues: Artículos del mismo cluster</li>
-                        <li>Líneas medias: Autores compartidos</li>
-                        <li>Líneas fuertes: Palabras clave compartidas</li>
-                    </ul>
-                </li>
-                <li><strong>Fichas de artículos:</strong> Al hacer clic en un nodo se muestran detalles completos</li>
-                <li><strong>Controles dinámicos:</strong> Pausar movimiento, recentrar vista, acercar/alejar</li>
-            </ul>
-        </div>
-
-        <!-- Tecnologías -->
-        <h2>💻 Tecnologías Utilizadas</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h4>Backend - Python</h4>
-                <div class="tech-stack">
-                    <span class="badge">Pandas</span>
-                    <span class="badge">NumPy</span>
-                    <span class="badge">Scikit-learn</span>
-                    <span class="badge">ORCID API</span>
+        <!-- Flujo de Procesamiento -->
+        <h2>🔄 Flujo de Procesamiento de Datos</h2>
+        <div class="flow-diagram">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <strong>Carga del Dataset</strong>
+                    Lee el archivo CSV limpio con ~3000 artículos y sus atributos enriquecidos
                 </div>
             </div>
-            <div class="feature-card">
-                <h4>Frontend - Web</h4>
-                <div class="tech-stack">
-                    <span class="badge">HTML5</span>
-                    <span class="badge">JavaScript</span>
-                    <span class="badge">Three.js</span>
-                    <span class="badge">WebGL</span>
+            <div style="text-align: center; color: #667eea; font-size: 20px; margin: -10px 0;">↓</div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <strong>Análisis de Clustering</strong>
+                    Detecta términos clave en cada artículo y lo asigna a uno de los 5 clusters
+                </div>
+            </div>
+            <div style="text-align: center; color: #667eea; font-size: 20px; margin: -10px 0;">↓</div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <strong>Generación de Nodos</strong>
+                    Crea nodos 3D posicionados espacialmente según cluster y características del artículo
+                </div>
+            </div>
+            <div style="text-align: center; color: #667eea; font-size: 20px; margin: -10px 0;">↓</div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <strong>Construcción de Aristas</strong>
+                    Establece conexiones (edges) entre nodos basadas en relaciones de autores y palabras clave
+                </div>
+            </div>
+            <div style="text-align: center; color: #667eea; font-size: 20px; margin: -10px 0;">↓</div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <strong>Generación de HTML Dinámico</strong>
+                    Crea un archivo HTML completo con JavaScript embebido para renderizar la visualización
+                </div>
+            </div>
+            <div style="text-align: center; color: #667eea; font-size: 20px; margin: -10px 0;">↓</div>
+            
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <strong>Archivo Interactivo</strong>
+                    Se genera <code>visualizacion_clouster_3d.html</code> listo para abrir en navegador
                 </div>
             </div>
         </div>
 
-        <!-- Archivos del Repositorio -->
-        <h2>📁 Archivos Principales</h2>
+        <!-- Funciones Clave -->
+        <h2>🔧 Funciones Clave del Script</h2>
         <div class="section">
-            <h3>Scripts de Análisis</h3>
-            <ul>
-                <li><strong>analisis_datos_scopus.py:</strong> Script inicial de limpieza y análisis básico</li>
-                <li><strong>analisis_datos_scopus_mejorado.py:</strong> Versión 2.0 con algoritmos avanzados y comentarios detallados</li>
-                <li><strong>generar_visualizacion_3d_scopus.py:</strong> Generación del archivo HTML de visualización 3D</li>
-                <li><strong>comentar_lineas_codigo.py:</strong> Herramienta para documentar automáticamente el código</li>
-            </ul>
+            <h3>build_nodes(df)</h3>
+            <p>Función principal que crea todos los nodos del mapa 3D.</p>
+            <div class="code-block">
+Parámetros:
+- df: DataFrame con artículos limpios
+
+Retorna:
+- nodes: Lista de diccionarios con propiedades 3D
+- cluster_stats: Estadísticas por cluster
+
+Propiedades de cada nodo:
+- id, x, y, z: Posición en 3D
+- cluster: Categoría temática
+- color: Color hexadecimal (#4ea8de, #7b6dff, etc.)
+- size: Tamaño basado en citas
+- title, authors, keywords, doi: Información del artículo
+- cluster_reason: Explicación de clasificación
+- highlight_terms: Palabras más importantes
+            </div>
+
+            <h3>build_edges(nodes)</h3>
+            <p>Crea las conexiones entre nodos para visualizar relaciones.</p>
+            <div class="code-block">
+Tipos de relaciones:
+- "cluster:NOMBRE" → Peso 0.2-0.3 (línea tenue)
+- "keyword" → Peso 0.65 (línea media)
+- "autor" → Peso 0.95 (línea fuerte)
+
+Algoritmo:
+1. Agrupa nodos por cluster, autor y palabra clave
+2. Conecta nodos dentro de cada grupo
+3. Asigna pesos según tipo de relación
+            </div>
+
+            <h3>terminos_detectados(texto, terminos)</h3>
+            <p>Detecta automáticamente términos de diccionarios temáticos en el texto.</p>
+            <div class="code-block">
+Diccionarios de términos:
+CLUSTER_TERMS: {
+    "social": ["communication", "interaction", "social media", ...],
+    "academico": ["learning", "teaching", "classroom", ...],
+    "creativo": ["design", "creativity", "content creation", ...]
+}
+
+Retorna los términos encontrados como lista
+            </div>
+
+            <h3>build_html(nodes, cluster_stats, edges)</h3>
+            <p>Genera el HTML/JavaScript completo con la visualización interactiva.</p>
+            <div class="code-block">
+Incluye:
+- Canvas de 1920x1080 mínimo
+- Motor de renderización 2D con rotación 3D
+- Interactividad: zoom, rotación, búsqueda
+- Panel lateral con información del artículo
+- Filtros por año, cluster, búsqueda de texto
+            </div>
         </div>
 
-        <!-- Botón de Visualización -->
+        <!-- Características de la Visualización Generada -->
+        <h2>🎯 Características de la Visualización Generada</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🖱️ Interactividad</h4>
+                <ul>
+                    <li>Arrastra con ratón para rotar</li>
+                    <li>Rueda para zoom</li>
+                    <li>Doble clic para enfoque automático</li>
+                    <li>Click para ver detalles del artículo</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>🔍 Filtrados Avanzados</h4>
+                <ul>
+                    <li>Búsqueda por texto (títulos, autores, DOI)</li>
+                    <li>Filtro por años</li>
+                    <li>Filtro por cluster temático</li>
+                    <li>Mostrar solo conexiones fuertes</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>📈 Métricas Dinámicas</h4>
+                <ul>
+                    <li>Contador de artículos visibles</li>
+                    <li>Total de citas acumuladas</li>
+                    <li>Cluster dominante</li>
+                    <li>Artículo más citado</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>💾 Exportación</h4>
+                <ul>
+                    <li>Exportar vista como PNG</li>
+                    <li>Descargar CSV de artículos visibles</li>
+                    <li>Pantalla completa (fullscreen)</li>
+                    <li>Visualizar top autores y artículos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Diccionarios Temáticos -->
+        <h2>📚 Diccionarios Temáticos (CLUSTER_TERMS)</h2>
+        <div class="section">
+            <h3>🔵 Cluster SOCIAL (48 términos)</h3>
+            <p>
+                Detecta artículos sobre aspectos sociales y comunitarios de IA:<br>
+                <span class="badge">Communication</span>
+                <span class="badge">Interaction</span>
+                <span class="badge">Community</span>
+                <span class="badge">Social Media</span>
+                <span class="badge">Human AI Interaction</span>
+                <span class="badge">Ethics</span>
+                <span class="badge">Trust</span>
+                <span class="badge">Perceptions</span>
+                <span class="badge">Digital Literacy</span>
+                <span class="badge">Y más...</span>
+            </p>
+
+            <h3>🟣 Cluster ACADÉMICO (20 términos)</h3>
+            <p>
+                Detecta artículos de carácter académico y educativo:<br>
+                <span class="badge badge-secondary">Learning</span>
+                <span class="badge badge-secondary">Teaching</span>
+                <span class="badge badge-secondary">Classroom</span>
+                <span class="badge badge-secondary">Pedagogy</span>
+                <span class="badge badge-secondary">Assessment</span>
+                <span class="badge badge-secondary">Curriculum</span>
+                <span class="badge badge-secondary">Adaptive Learning</span>
+                <span class="badge badge-secondary">Higher Education</span>
+                <span class="badge badge-secondary">Y más...</span>
+            </p>
+
+            <h3>🔴 Cluster CREATIVO (22 términos)</h3>
+            <p>
+                Detecta artículos sobre aplicaciones creativas e innovadoras de IA:<br>
+                <span class="badge">Creative</span>
+                <span class="badge">Design</span>
+                <span class="badge">Content Creation</span>
+                <span class="badge">Image Generation</span>
+                <span class="badge">Storytelling</span>
+                <span class="badge">Generative Design</span>
+                <span class="badge">Prompt Engineering</span>
+                <span class="badge">Innovation</span>
+                <span class="badge">Y más...</span>
+            </p>
+        </div>
+
+        <!-- Tecnologías y Librerías -->
+        <h2>💻 Tecnologías y Librerías Utilizadas</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Python Libraries</h4>
+                <div class="tech-tags">
+                    <span class="badge">pandas</span>
+                    <span class="badge">numpy</span>
+                    <span class="badge">re (regex)</span>
+                    <span class="badge">json</span>
+                    <span class="badge">pathlib</span>
+                    <span class="badge">collections</span>
+                    <span class="badge">math</span>
+                    <span class="badge">random</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <h4>Frontend Technologies</h4>
+                <div class="tech-tags">
+                    <span class="badge badge-secondary">HTML5</span>
+                    <span class="badge badge-secondary">Canvas 2D API</span>
+                    <span class="badge badge-secondary">JavaScript ES6</span>
+                    <span class="badge badge-secondary">CSS3</span>
+                    <span class="badge badge-secondary">WebGL (implícito)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configuración de Clusters -->
+        <h2>🎨 Configuración de Clusters (CLUSTER_CONFIG)</h2>
+        <div class="section">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Social</h4>
+                    <p>
+                        <strong>Centro 3D:</strong> (-360, -20, 120)<br>
+                        <strong>Color:</strong> #4ea8de (azul cielo)<br>
+                        <strong>Enfoque:</strong> Aspectos sociales y comunitarios de IA
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4>Académico</h4>
+                    <p>
+                        <strong>Centro 3D:</strong> (0, 190, -40)<br>
+                        <strong>Color:</strong> #7b6dff (púrpura)<br>
+                        <strong>Enfoque:</strong> Investigación y educación formal
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4>Creativo</h4>
+                    <p>
+                        <strong>Centro 3D:</strong> (330, -10, 90)<br>
+                        <strong>Color:</strong> #ff7ca8 (rosa)<br>
+                        <strong>Enfoque:</strong> Aplicaciones innovadoras y creativas
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4>Otro</h4>
+                    <p>
+                        <strong>Centro 3D:</strong> (0, -280, -120)<br>
+                        <strong>Color:</strong> #f1c453 (amarillo)<br>
+                        <strong>Enfoque:</strong> Artículos que no encajan en categorías previas
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de Navegación -->
         <div class="btn-container">
-            <a href="visualizacion_clouster_3d.html" class="btn">🚀 Abrir Visualización 3D Interactiva</a>
+            <a href="visualizacion_clouster_3d.html" class="btn">🚀 Abrir Visualización 3D</a>
+            <a href="https://github.com/IsmaelF-O/Analis_de_datos_3384/blob/main/generar_visualizacion_3d_scopus.py" class="btn btn-secondary" target="_blank">📜 Ver Código en GitHub</a>
+            <a href="index.html" class="btn btn-secondary">⬅️ Volver a Inicio</a>
         </div>
 
         <!-- Footer -->
         <div class="section" style="margin-top: 40px; text-align: center; color: #999;">
             <p>
-                <strong>Autor:</strong> IsmaelF-O | 
-                <strong>Última actualización:</strong> Mayo 2026 | 
-                <strong>Estado:</strong> Proyecto Completo
+                <strong>Script:</strong> generar_visualizacion_3d_scopus.py | 
+                <strong>Líneas de código:</strong> 1375 | 
+                <strong>Tamaño:</strong> ~50 KB | 
+                <strong>HTML generado:</strong> ~1.4 MB
             </p>
         </div>
     </div>
