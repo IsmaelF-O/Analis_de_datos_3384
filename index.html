@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Análisis de Datos Bibliométricos</title>
+    <title>Análisis de Datos Bibliométricos 3D - Inteligencia Artificial</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -12,26 +12,32 @@
             font-family: "Segoe UI", system-ui, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .container {
-            max-width: 900px;
+            max-width: 1000px;
+            margin: 0 auto;
             background: white;
             border-radius: 12px;
             padding: 40px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
         h1 {
-            color: #333;
+            color: #667eea;
             margin-top: 0;
             border-bottom: 3px solid #667eea;
             padding-bottom: 15px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            font-size: 1.5em;
         }
         .description {
-            color: #666;
-            line-height: 1.6;
+            color: #555;
+            line-height: 1.8;
             font-size: 16px;
             margin: 20px 0;
         }
@@ -41,66 +47,261 @@
         }
         a.btn {
             display: inline-block;
-            padding: 15px 40px;
-            background: #667eea;
+            padding: 15px 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
         a.btn:hover {
-            background: #764ba2;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
-        .tech {
+        .section {
             margin-top: 25px;
-            padding: 15px;
-            background: #f5f5f5;
+            padding: 20px;
+            background: #f9f9f9;
             border-radius: 8px;
+            border-left: 4px solid #667eea;
         }
-        .tech h3 {
+        .section h3 {
             margin-top: 0;
-            color: #333;
+            color: #667eea;
+            font-size: 1.2em;
         }
-        .tech p {
+        .section ul, .section li {
+            margin: 8px 0;
+            color: #555;
+            line-height: 1.7;
+        }
+        .section li {
+            margin-left: 20px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .feature-card h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .feature-card p {
             color: #666;
             font-size: 14px;
+            margin: 8px 0 0 0;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            margin: 15px 0;
+            color: #856404;
+        }
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            a.btn {
+                padding: 12px 40px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>📊 Análisis de Datos Bibliométricos 3D</h1>
-        
-        <div class="description">
+        <p class="description" style="font-size: 18px; color: #667eea; margin-bottom: 30px;">
+            <strong>Análisis del uso de Inteligencia Artificial en Scopus</strong>
+        </p>
+
+        <!-- Descripción General -->
+        <div class="section">
+            <h3>📌 Descripción del Proyecto</h3>
             <p>
-                Este proyecto realiza una limpieza y análisis profundo de datos bibliométricos 
-                utilizando Python. Se implementan técnicas de clustering para visualizar 
-                relaciones entre artículos académicos en un espacio 3D interactivo.
+                Este repositorio contiene un proceso completo de <strong>limpieza, normalización y estructuración</strong> 
+                de datos bibliométricos obtenidos de la base de datos <strong>Scopus</strong>. El análisis se enfoca en 
+                explorar y visualizar el uso de la inteligencia artificial en investigaciones académicas, identificando 
+                patrones, conexiones entre autores y clustering temático.
             </p>
-            <p>
-                <strong>Características:</strong>
-            </p>
+            <div class="highlight">
+                <strong>🎯 Objetivo Principal:</strong> Crear una visualización 3D interactiva que permita explorar 
+                relaciones entre artículos, autores y temas dentro de un corpus de investigación académica.
+            </div>
+        </div>
+
+        <!-- Limpieza de Datos -->
+        <h2>🔧 Etapa 1: Limpieza y Normalización de Datos</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>✨ Normalización de Texto</h4>
+                <p>
+                    • Conversión a minúsculas (títulos, autores, resúmenes)<br>
+                    • Eliminación de espacios redundantes<br>
+                    • Sustitución de valores nulos<br>
+                    • Depuración de caracteres no relevantes
+                </p>
+            </div>
+            <div class="feature-card">
+                <h4>👥 Tratamiento de Autores</h4>
+                <p>
+                    • Tokenización estructural por delimitador (;)<br>
+                    • Eliminación de espacios y acentos<br>
+                    • Identificación de duplicados<br>
+                    • Normalización basada en similitud textual
+                </p>
+            </div>
+        </div>
+
+        <!-- Identificación de Autores -->
+        <h2>🔍 Etapa 2: Identificación y Desambiguación de Autores</h2>
+        <div class="section">
+            <h3>Estrategia ORCID y Similitud Textual</h3>
             <ul>
-                <li>Limpieza de datos con Pandas</li>
-                <li>Identificación de duplicados con ORCID</li>
-                <li>Visualización 3D interactiva de clusters</li>
-                <li>Análisis de conexiones entre artículos</li>
+                <li><strong>Identificadores únicos:</strong> Cuando están disponibles los ORCID, se utilizan para agrupar autores con certeza</li>
+                <li><strong>Normalización por similitud:</strong> Cuando no hay ORCID, se aplica un algoritmo de similitud textual para detectar variantes del mismo autor</li>
+                <li><strong>Agrupación inteligente:</strong> Los autores con nombres equivalentes se agrupan automáticamente</li>
+                <li><strong>Análisis de productividad:</strong> Se calcula la frecuencia de aparición de cada autor en el corpus para identificar los más relevantes</li>
             </ul>
         </div>
 
-        <div class="btn-container">
-            <a href="visualizacion_clusters_3d.html" class="btn">🚀 Abrir Visualización 3D</a>
+        <!-- Análisis Mejorado v2.0 -->
+        <h2>📈 Etapa 3: Análisis Avanzado (Versión 2.0)</h2>
+        <div class="section">
+            <h3>Características Principales del Script Mejorado</h3>
+            <ul>
+                <li><strong>Limpieza robusta:</strong> Eliminación de duplicados y normalizaciones profundas</li>
+                <li><strong>Reducción de ruido semántico:</strong> Eliminación de signos de puntuación, admiración e interrogación</li>
+                <li><strong>Desambiguación de autores:</strong> Algoritmos avanzados para identificar el mismo autor bajo diferentes variantes</li>
+                <li><strong>Construcción de métricas:</strong> Generación de indicadores bibliométricos relevantes</li>
+                <li><strong>Clasificación temática:</strong> Clustering automático en 4 categorías principales</li>
+            </ul>
         </div>
 
-        <div class="tech">
-            <h3>Tecnologías utilizadas:</h3>
-            <p><strong>Backend:</strong> Python (Pandas, NumPy, Scikit-learn)</p>
-            <p><strong>Frontend:</strong> HTML5, JavaScript (Three.js para 3D)</p>
+        <!-- Clustering Temático -->
+        <h2>🎨 Etapa 4: Clasificación en Clusters Temáticos</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🔵 Cluster Social</h4>
+                <p>Artículos enfocados en aspectos sociales e impacto de IA en sociedades</p>
+            </div>
+            <div class="feature-card">
+                <h4>🟣 Cluster Académico</h4>
+                <p>Investigaciones de carácter técnico y científico sobre IA</p>
+            </div>
+            <div class="feature-card">
+                <h4>🔴 Cluster Creativo</h4>
+                <p>Aplicaciones innovadoras y creativas de inteligencia artificial</p>
+            </div>
+            <div class="feature-card">
+                <h4>🟡 Cluster Mixto/Otro</h4>
+                <p>Artículos que no encajan en categorías previas o combinan múltiples áreas</p>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <strong>📝 Método de clasificación:</strong> Detección automática de términos y expresiones clave 
+            relevantes para cada cluster temático.
+        </div>
+
+        <!-- Visualización 3D -->
+        <h2>🚀 Etapa 5: Visualización 3D Interactiva</h2>
+        <div class="section">
+            <h3>Características de la Visualización</h3>
+            <ul>
+                <li><strong>Espacio 3D interactivo:</strong> Exploración libre con rotación, zoom y navegación</li>
+                <li><strong>Nodos coloreados:</strong> Cada artículo representado por una esfera con color según su cluster</li>
+                <li><strong>Conexiones inteligentes:</strong>
+                    <ul>
+                        <li>Líneas tenues: Artículos del mismo cluster</li>
+                        <li>Líneas medias: Autores compartidos</li>
+                        <li>Líneas fuertes: Palabras clave compartidas</li>
+                    </ul>
+                </li>
+                <li><strong>Fichas de artículos:</strong> Al hacer clic en un nodo se muestran detalles completos</li>
+                <li><strong>Controles dinámicos:</strong> Pausar movimiento, recentrar vista, acercar/alejar</li>
+            </ul>
+        </div>
+
+        <!-- Tecnologías -->
+        <h2>💻 Tecnologías Utilizadas</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Backend - Python</h4>
+                <div class="tech-stack">
+                    <span class="badge">Pandas</span>
+                    <span class="badge">NumPy</span>
+                    <span class="badge">Scikit-learn</span>
+                    <span class="badge">ORCID API</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <h4>Frontend - Web</h4>
+                <div class="tech-stack">
+                    <span class="badge">HTML5</span>
+                    <span class="badge">JavaScript</span>
+                    <span class="badge">Three.js</span>
+                    <span class="badge">WebGL</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archivos del Repositorio -->
+        <h2>📁 Archivos Principales</h2>
+        <div class="section">
+            <h3>Scripts de Análisis</h3>
+            <ul>
+                <li><strong>analisis_datos_scopus.py:</strong> Script inicial de limpieza y análisis básico</li>
+                <li><strong>analisis_datos_scopus_mejorado.py:</strong> Versión 2.0 con algoritmos avanzados y comentarios detallados</li>
+                <li><strong>generar_visualizacion_3d_scopus.py:</strong> Generación del archivo HTML de visualización 3D</li>
+                <li><strong>comentar_lineas_codigo.py:</strong> Herramienta para documentar automáticamente el código</li>
+            </ul>
+        </div>
+
+        <!-- Botón de Visualización -->
+        <div class="btn-container">
+            <a href="visualizacion_clusters_3d.html" class="btn">🚀 Abrir Visualización 3D Interactiva</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="section" style="margin-top: 40px; text-align: center; color: #999;">
+            <p>
+                <strong>Autor:</strong> IsmaelF-O | 
+                <strong>Última actualización:</strong> Mayo 2026 | 
+                <strong>Estado:</strong> Proyecto Completo
+            </p>
         </div>
     </div>
 </body>
